@@ -1,0 +1,8 @@
+{
+  "tasks": {
+    "reset": "rm -rf ./app/out",
+    "build": "deno run --allow-write --allow-read --allow-env --allow-run --watch=./app/src ./app/build.ts",
+    "serve": "deno run --allow-net --allow-read --watch=./app/out ./app/out/main.ts",
+    "build-serve": "deno task serve || true & deno task build || true"
+  }
+}

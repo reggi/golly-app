@@ -1,0 +1,3 @@
+[submodule "projects/golly"]
+	path = projects/golly
+	url = https://github.com/reggi/golly
