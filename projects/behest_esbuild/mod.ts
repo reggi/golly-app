@@ -1,20 +1,9 @@
 import path from "node:path";
-import { EsbuildBuilder, JSXConfig, EsbuildBuilderOptions } from "./esbuild/mod.ts";
+import { EsbuildBuilder, JSXConfig, EsbuildBuilderOptions } from "../esbuild/mod.ts";
 import { EntryMeta, PluginAbstract } from "../behest/mod.ts";
+import { fileExists } from "../file_system/file_exists/mod.ts";
 
 const cwd = Deno.cwd()
-
-export async function fileExists(filePath: string): Promise<boolean> {
-  try {
-    await Deno.stat(filePath);
-    return true;
-  } catch (error) {
-    if (error instanceof Deno.errors.NotFound) {
-      return false;
-    }
-    throw error; // Unexpected error, rethrow it
-  }
-}
 
 export class BehestEsbuild extends PluginAbstract {
   entrypoints: {[key: string]: string} = {};
